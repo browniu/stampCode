@@ -13,13 +13,34 @@
     i {
         font-size: 12px;
     }
+
+    .status {
+        margin: 10px 0;
+        width: 410px;
+        height: 10px;
+        background: #666;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .status span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: green;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: background-color .2s ease;
+    }
 </style>
 <body>
 
-<h1>数字图章</h1>
+<h3>多点位匹配</h3>
 <div class="cvs"></div>
-<div class="panel">
-    <div>点1：<i id="pps1"><span>0</span> , <span>0</span></i></div>
-</div>
+<!--<span class="rotate">rotate</span>-->
+<div class="status"><span></span></div>
+<div class="panel"></div>
 </body>
 </html>
