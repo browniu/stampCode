@@ -1,0 +1,15 @@
+{
+  "name": "stampCode",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/browniu/stampCode.git",
+  "author": "browniu <niuniusoga@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "deploy": "gh-pages -d src"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1"
+  }
+}

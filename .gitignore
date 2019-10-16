@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+
+# builds
+build
+dist
+temp
+
+# misc
+.DS_Store
+.idea
