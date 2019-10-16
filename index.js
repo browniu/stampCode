@@ -7,9 +7,6 @@ const randomPosInRange = (min, max) => Array.from({length: 2}, () => Math.floor(
 // 生成指定位数和范围的二维点位组合
 const RPIRInCount = (min, max, n) => Array.from({length: n}, () => randomPosInRange(min, max));
 
-// 绘制点位组合
-const drawPoints = (points) => console.log('draw');
-
 // 计算各点的相互距离
 const pointsDistance = (points) => {
     let array = [];
@@ -29,7 +26,7 @@ const minInArray = (array) => array.sort((a, b) => a - b)[0];
 const distanceMultiple = (points) => {
     const distances = pointsDistance(points);
     const minDistance = minInArray(distances);
-    const code = distances.map(distance => round(distance / minDistance, 0));
+    const code = distances.map(distance => round(distance / minDistance, 5));
     code.shift();
     return code
 
@@ -39,14 +36,28 @@ const distanceMultiple = (points) => {
 const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
 
 // 近似匹配
-const approximateMatch = (a, b, range) => Math.abs(a - b) >= range;
+const approximateMatchArray = (arr1, arr2) => {
+    let scope = 0;
+    arr1 = arr1.sort();
+    arr2 = arr2.sort();
+    const part = 100 / arr1.length;
+    for (let i = 0; i < arr1.length; i++) {
+        const reduce = Math.abs(arr1[i] - arr2[i]);
+        const partScope = part * (1 - reduce / 10);
+        scope = scope + partScope
+    }
+    let damping = 105;
+    if (scope < 90) damping = 125;
+    scope = scope * (scope / damping);
+    return scope
+};
 
-//
 // 主程序
 const run = () => {
-    const points = false ? [[26, 27], [79, 33], [31, 23]] : RPIRInCount(20, 80, 3)
+    const points = false ? [[126, 77], [79, 133], [61, 43]] : RPIRInCount(20, 180, 4)
     const code = distanceMultiple(points);
-    console.log(code)
+    console.log(code);
+    window.onload = () => draw(points);
 };
 
 // 运行
