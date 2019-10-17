@@ -3,7 +3,9 @@
 
 ## [Demo](https://browniu.github.io/stampCode/)
 
-![demo](./static/stampCode.gif)
+目前建议在Pc Chrome测试，事件监听的是`mouse`类
+
+![demo](./static/stampCode.gif) 
 
 ## 简述
 
