@@ -28,13 +28,13 @@ const drawPoint = (ctx, x, y, color, size) => {
 // 交互监听
 function listenCvs(cvs, ctx, points, stempCode) {
     let dragAble = [false, false, false];
-    cvs.addEventListener('touchstart', (e) => {
-        const touch = getPosRelaParent(e.touches[0], cvs);
+    cvs.addEventListener('mousedown', (e) => {
+        const touch = getPosRelaParent(e, cvs);
         dragAble = touchPoints(touch, points)
     });
 
-    cvs.addEventListener('touchmove', (e) => {
-        const touch = getPosRelaParent(e.changedTouches[0], cvs);
+    cvs.addEventListener('mousemove', (e) => {
+        const touch = getPosRelaParent(e, cvs);
         if (touch && dragAble.includes(true)) {
             points = points.map((point, i) => {
                 if (dragAble[i]) return [touch.x, touch.y];
@@ -45,7 +45,8 @@ function listenCvs(cvs, ctx, points, stempCode) {
         }
     });
 
-    cvs.addEventListener('touchend', () => dragAble = [false, false, false]);
+    cvs.addEventListener('mouseup', () => dragAble = [false, false, false]);
+    cvs.addEventListener('mouseleave', () => dragAble = [false, false, false]);
 
     // document.querySelector('.rotate').onclick = () => rotateCtx(cvs, ctx, points);
 
