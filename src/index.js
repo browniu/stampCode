@@ -29,7 +29,6 @@ const distanceMultiple = (points) => {
     const code = distances.map(distance => round(distance / minDistance, 5));
     code.shift();
     return code
-
 };
 
 // 四舍五入到指定位数

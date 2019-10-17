@@ -10,6 +10,11 @@
 <script src="index.js"></script>
 <script src="draw.js"></script>
 <style>
+    html, body {
+        overflow: hidden;
+        background: #fff;
+    }
+
     i {
         font-size: 12px;
     }
@@ -35,6 +40,13 @@
         transition: background-color .2s ease;
     }
 </style>
+<script>
+    window.addEventListener('load', () => {
+        document.body.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, {passive: false})
+    })
+</script>
 <body>
 
 <h3>多点位匹配</h3>

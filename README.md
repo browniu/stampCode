@@ -50,6 +50,7 @@ const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${
 const approximateMatch = (a, b, range) => Math.abs(a - b) >= range;
 ```
 
-## Todolist
-* 多点位置组合映射解码
-* canvas 拖拽生成点位信息
+## 运行
+```bash
+cd src && serve
+```
