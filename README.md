@@ -1,5 +1,5 @@
 # stampCode
-> 一个触摸印章技术的实现方案（点位携信）
+> 一个触摸印章技术的实现方案
 
 ## [Demo](https://browniu.github.io/stampCode/)
 
