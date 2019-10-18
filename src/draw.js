@@ -95,13 +95,6 @@ const drawStamp = (root, points) => {
     drawPoints(points, cvs, ctx, '#73abfe')
 };
 
-// 旋转画布
-const rotateCtx = (cvs, ctx, points) => {
-    clearCtx(cvs, ctx);
-    ctx.rotate(20 * Math.PI / 180);
-    drawPoints(points, cvs, ctx);
-};
-
 // 绘制运行
 const draw = (points) => {
     const {cvs, ctx} = initCanvas(document.querySelector('.cvs-touch'));

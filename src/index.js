@@ -19,6 +19,7 @@ const pointsDistance = (points) => {
     }
     return array
 };
+
 // 计算数组中的最小值
 const minInArray = (array) => array.sort((a, b) => a - b)[0];
 
@@ -52,10 +53,12 @@ const approximateMatchArray = (arr1, arr2) => {
     return scope
 };
 
+
+
 // 余弦相似度
 const cosSimilarity = async (x, y) => {
-    x = tf.tensor1d(x);
-    y = tf.tensor1d(y);
+    x = tf.tensor2d(x);
+    y = tf.tensor2d(y);
     const p1 = tf.sqrt(x.mul(x).sum());
     const p2 = tf.sqrt(y.mul(y).sum());
     let p12 = x.mul(y).sum();
@@ -67,6 +70,7 @@ const cosSimilarity = async (x, y) => {
 // 主程序
 const run = () => {
     const points = false ? [[126, 77], [79, 133], [61, 43]] : RPIRInCount(20, 180, 4)
+    window.points = points;
     const code = distanceMultiple(points);
     console.log(code);
     window.onload = () => draw(points);
