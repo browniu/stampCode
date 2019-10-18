@@ -10,20 +10,56 @@
 <script src="index.js"></script>
 <script src="draw.js"></script>
 <style>
+    * {
+        --green: #42b983;
+        --red: #f66;
+        --blue: #73abfe;
+        --title: #273849;
+        --text: #304455;
+    }
+
     html, body {
         overflow: hidden;
         background: #fff;
+        min-width: 450px;
+        color: var(--text);
     }
 
-    i {
+    .cvs-item {
+        display: inline-block;
         font-size: 12px;
+        float: left;
+        position: relative;
+        width: 200px;
+    }
+
+    .cvs-item p {
+        white-space: nowrap;
+    }
+
+    .cvs-stamp:before {
+        content: '印章图案';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #ccc;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        transform: scale(.7);
+        color: #fff;
+        display: none;
+    }
+
+    .control {
+        text-align: center;
     }
 
     .status {
         margin: 10px 0;
         width: 410px;
         height: 10px;
-        background: #666;
+        background: #eee;
         position: relative;
         white-space: nowrap;
         overflow: hidden;
@@ -33,7 +69,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: green;
+        background: var(--green);
         display: inline-block;
         height: 100%;
         width: 100%;
@@ -49,9 +85,16 @@
 </script>
 <body>
 
-<h3>多点位匹配</h3>
-<div class="cvs"></div>
-<!--<span class="rotate">rotate</span>-->
+<h3>多点位匹配测试 <span style="opacity: .5;">（使用Chrome75+）</span></h3>
+<div class="cvs">
+    <div class="cvs-item">
+        <span class="cvs-touch"></span>
+        <p>拖动左侧点位与右侧印章进行匹配 尝试使用对称和缩放位置</p>
+    </div>
+    <div class="cvs-item">
+        <span class="cvs-stamp"></span>
+    </div>
+</div>
 <div class="status"><span></span></div>
 <div class="panel"></div>
 </body>

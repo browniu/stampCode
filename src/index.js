@@ -34,7 +34,7 @@ const distanceMultiple = (points) => {
 // 四舍五入到指定位数
 const round = (n, decimals = 0) => Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
 
-// 近似匹配
+// 差异相关性
 const approximateMatchArray = (arr1, arr2) => {
     let scope = 0;
     arr1 = arr1.sort();
@@ -48,7 +48,20 @@ const approximateMatchArray = (arr1, arr2) => {
     let damping = 105;
     if (scope < 90) damping = 125;
     scope = scope * (scope / damping);
+    if (scope > 100) scope = 0;
     return scope
+};
+
+// 余弦相似度
+const cosSimilarity = async (x, y) => {
+    x = tf.tensor1d(x);
+    y = tf.tensor1d(y);
+    const p1 = tf.sqrt(x.mul(x).sum());
+    const p2 = tf.sqrt(y.mul(y).sum());
+    let p12 = x.mul(y).sum();
+    let score = p12.div(p1.mul(p2));
+    score = ((await score.data())[0] - 0.9) * 10;
+    return score
 };
 
 // 主程序
