@@ -3,8 +3,7 @@
 
 ## [Demo](https://browniu.github.io/stampCode/)
 
-
-[![demo](./static/stampCode2.gif)](https://browniu.github.io/stampCode/) 
+![demo](./static/stampCode2.gif)
 
 ## 简述
 
